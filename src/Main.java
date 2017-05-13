@@ -9,22 +9,26 @@ public class Main {
 
 
         Crypt crypt= new Crypt();
-        int[] a = parseBytes("a4b2 c9ef 0876 c1ce");
-        int[] b = parseBytes("438d e282" +
-                "3820 dbde");
+        int[] a = parseBytes("5469875321456045");
+        int[] b = parseBytes("5987423651456987");
         int[] res = crypt.enCrypt(a, b);
+        System.out.println("Main: 密文");
+        print(res);
+    }
+
+    public static void print(int[] res) {
         int count = 0;
         StringBuilder sb = new StringBuilder(4);
         for (int val : res) {
-            if (count % 4 == 0) {
-                System.out.println(sb.toString());
+            if (count % 4 == 0 && count != 0) {
+                System.out.printf("%X", Integer.parseInt(sb.toString(), 2));
                 sb = new StringBuilder(4);
 
             }
             count ++;
             sb.append(val);
         }
-        System.out.println(sb.toString());
+        System.out.printf("%X\n", Integer.parseInt(sb.toString(), 2));
     }
 
     private static int[] parseBytes(String s) {

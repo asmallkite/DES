@@ -116,6 +116,9 @@ public class KeyGenerate {
         System.arraycopy(C0, 0, subKey, 0, C0.length);
         System.arraycopy(D0, 0, subKey, C0.length, D0.length);
         //方法二： Arrays.copyOf()
+        for (int i = 0; i < key.length; i++) {
+            key[i] = subKey[i];
+        }
         return subKey;
     }
 
