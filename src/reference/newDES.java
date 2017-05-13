@@ -599,6 +599,12 @@ public class newDES {
 
         // These tests were derived from the password challenge-response
         // conversations observed between a VNC client and server.
+
+        test(
+                parseBytes("a4b2 c9ef 0876 c1ce "),
+                parseBytes("438d e282 3820 dbde"),
+                parseBytes("438d e282 3820 dbde")
+        );
         test(
                 parseBytes("a4b2 c9ef 0876 c1ce 438d e282 3820 dbde"),
                 parseBytes("fa60 69b9 85fa 1cf7 0bea a041 9137 a6d3"),
