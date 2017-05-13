@@ -1,4 +1,7 @@
 /**
+ *
+ * 改进建议：
+ * 1. 对于table 置换 可以封装
  * Created by 10648 on 2017/5/13 0013.
  * 1. 对64明文 加密  IP操作
  * 2. 将IP置换输出的明文一分为二，L0,R0,各32位
@@ -32,11 +35,12 @@ public class Crypt {
     /**
      * 加密过程
      * @param data 64位明文数据
+     * @param byteKey 64位密钥
      * @return DES加密结果
      */
-    public int[] enCrypt(int[] data) {
+    public int[] enCrypt(int[] data, int[] byteKey) {
         int[] dataIPed = IPReplace(data); // IP置换
-        int[] itera = iteration16Times(dataIPed);
+        int[] itera = iteration16Times(dataIPed, byteKey);
         return IP_1(itera);
     }
 
@@ -62,8 +66,8 @@ public class Crypt {
      * @param dataIPed IP置换后的 64 位输出
      * @return
      */
-    private int[] iteration16Times(int[] dataIPed) {
-        int[][] keys = KeyGenerate.keysGenerate(dataIPed); // 生成密钥数组
+    private int[] iteration16Times(int[] dataIPed, int[] byteKey) {
+        int[][] keys = KeyGenerate.keysGenerate(byteKey); // 生成密钥数组
 
         int[] L0 = new int[32];
         int[] R0 = new int[32];

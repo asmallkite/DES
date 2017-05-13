@@ -1,3 +1,5 @@
+package reference;
+
 import java.security.SecureRandom;
 
 import com.google.common.base.Strings;
@@ -17,7 +19,7 @@ import java.security.spec.InvalidKeySpecException;
 /**
  * Created by 10648 on 2017/5/8 0008.
  */
-public class DES {
+public class DES_java_api {
     /**
      * 定义加密方式
      */
@@ -91,7 +93,7 @@ public class DES {
     }
 
     /**
-     * DES 解密
+     * reference.DES_java_api 解密
      * @param data 需要解密的字符串
      * @param key 密钥
      * @return
@@ -108,7 +110,7 @@ public class DES {
     }
 
     /**
-     * DES 解密
+     * reference.DES_java_api 解密
      * @param data 需要解密的字节数组
      * @param key 密钥
      * @return
@@ -127,7 +129,7 @@ public class DES {
     }
 
     /**
-     * DES 加密
+     * reference.DES_java_api 加密
      * @param data 需要加密的字符串
      * @param key 密钥
      * @return
@@ -144,7 +146,7 @@ public class DES {
     }
 
     /**
-     * DES 加密
+     * reference.DES_java_api 加密
      * @param data 需要加密的字节数组
      * @param key 密钥
      * @return
@@ -247,7 +249,7 @@ public class DES {
      * @param args
      */
     public static void main(String[] args) {
-        String key = DES.init();
+        String key = DES_java_api.init();
         System.out.println("DES密钥:\n" + key);
 
         String word = "123";
