@@ -68,13 +68,23 @@ public class F {
             22,11,4,25
     };
 
+    public static int[] f(int[] R0, int[] subkey) {
+        F instance =  new F();
+        int[] EExpended = instance.EExpend(R0);
+        int[] XORed = Util.XOR(EExpended, subkey);
+        int[] sBoxed = instance.SBox(XORed);
+        return instance.PReplace(sBoxed);
+    }
+
+
+
     /**
      * f函数的第一步
      *对64位明文的右半部分进行扩展，然后与子密钥进行异或
      * @param data 32位右半部分
      * @return 扩展后的48位数据
      */
-    public int[] EExpend(int[] data) {
+    private int[] EExpend(int[] data) {
         int[]  dataExpend = new int[48];
         for (int i = 0; i < dataExpend.length; i++) {
             dataExpend[i] = data[E[i] - 1];
@@ -83,21 +93,23 @@ public class F {
     }
 
     /**
+     * s使用工具类即可，此方法  deprecated
      * 异或操作
      * 主要是f函数的第二步
      * 扩展后的48位数据和子密钥异或
+     *
      * @param data1 data1
      * @param data2 data2
      * @return 异或后的结果， 长度和data1 2一致
      */
 
-    public int[] XOR(int[] data1, int[] data2) {
-        int[] XORResult = new int[data1.length];
-        for (int i = 0; i < data1.length; i++) {
-            XORResult[i] = data1[i] ^ data2[i];
-        }
-        return XORResult;
-    }
+//    public int[] XOR(int[] data1, int[] data2) {
+//        int[] XORResult = new int[data1.length];
+//        for (int i = 0; i < data1.length; i++) {
+//            XORResult[i] = data1[i] ^ data2[i];
+//        }
+//        return XORResult;
+//    }
 
     /**
      *  进行S盒代换
@@ -106,7 +118,7 @@ public class F {
      * @return 返回S盒代换后的结果
      */
 
-    public int[] SBox(int[] temp) {
+    private int[] SBox(int[] temp) {
         int[] sBox32 = new int[32]; // S盒代换后的32位结果
         int[] sBox8 = new int[8];   //S盒代换的8个10进制数
 
@@ -136,7 +148,7 @@ public class F {
      * @param sBox32 S盒置换后的结果
      * @return 返回P置换后的结果
      */
-    public int[] PReplace(int[] sBox32) {
+    private int[] PReplace(int[] sBox32) {
         int[] res = new int[32];
         for (int i = 0; i < 32; i++) {
             res[i] = sBox32[P[i] - 1];

@@ -35,6 +35,15 @@ public class KeyGenerate {
             46,42,50,36,29,32,
     };
 
+
+    public static int[][] keysGenerate(int[] key64) {
+        KeyGenerate generate = new KeyGenerate();
+        int[] pc_1 = generate.PC_1(key64);
+        int[][] leftMoved = generate.LeftMove(pc_1);
+        return generate.PC_2(leftMoved);
+    }
+
+
     /**
      * 第一步
      * PC_1置换
