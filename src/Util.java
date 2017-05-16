@@ -20,4 +20,20 @@ public class Util {
         }
         return XORResult;
     }
+
+
+    public static String bit2String(int[] data) {
+        StringBuilder sb = new StringBuilder();
+        int count = 0;
+        int sum = 0;
+        for (int val : data) {
+            sum = (sum << 1) + val;
+            count++;
+            if (count % 4 == 0) {
+                sb.append(Integer.toHexString(sum).toUpperCase());
+                sum = 0;
+            }
+        }
+        return sb.toString();
+    }
 }

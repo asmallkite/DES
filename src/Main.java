@@ -31,7 +31,7 @@ public class Main {
         System.out.printf("%X\n", Integer.parseInt(sb.toString(), 2));
     }
 
-    private static int[] parseBytes(String s) {
+    public static int[] parseBytes(String s) {
         s = s.replace(" ", "");
         int[] ba = new int[64];
         for (int i = 0; i < 16; i++) {

@@ -40,8 +40,6 @@ public class Crypt {
      */
     public int[] enCrypt(int[] data, int[] byteKey) {
         int[] dataIPed = IPReplace(data); // IP置换
-        System.out.println("数据IP置换： ok" );
-        Main.print(dataIPed);
         int[] itera = iteration16Times(dataIPed, byteKey);
         return IP_1(itera);
     }
