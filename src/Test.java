@@ -63,21 +63,16 @@ public class Test {
         JButton enCrypt = new JButton("加密");
         enCrypt.setBounds(300, 30, 100, 25);
         panel.add(enCrypt);
-        enCrypt.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                toTextKeyMes = toTextKey.getText();
-                toTextMes = toText.getText();
+        enCrypt.addActionListener(e -> {
+            toTextKeyMes = toTextKey.getText();
+            toTextMes = toText.getText();
 
 
-                System.out.println(toTextMes);
-                System.out.println(toTextKeyMes);
-                Crypt crypt= new Crypt();
-                int[] a = Main.parseBytes(toTextMes);
-                int[] b = Main.parseBytes(toTextKeyMes);
-                int[] res = crypt.enCrypt(a, b);
-                resText.setText(Util.bit2String(res));
-            }
+            Crypt crypt= new Crypt();
+            int[] a = Util.parseBytes(toTextMes);
+            int[] b = Util.parseBytes(toTextKeyMes);
+            int[] res = crypt.enCrypt(a, b);
+            resText.setText(Util.bit2String(res));
         });
 
         JButton deCrypt = new JButton("解密");

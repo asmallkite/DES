@@ -70,7 +70,7 @@ public class Crypt {
         int[][] keys = KeyGenerate.keysGenerate(byteKey); // 生成密钥数组
         for (int i = 0; i < 16; i++) {
             System.out.println("第" + i + "密钥");
-            Main.print(keys[i]);
+            Util.print(keys[i]);
         }
 
         int[] L0 = new int[32];
@@ -82,7 +82,7 @@ public class Crypt {
         //16轮迭代
         int[] L1 = new int[32];
         int[] R1 = new int[32];
-        int[] f_ed = new int[32]; // f操作的结果
+        int[] f_ed ; // f操作的结果
         for (int i = 0; i < 16; i++) {
             // L1 = R0
             System.arraycopy(R0, 0, L1, 0, 32);
@@ -90,12 +90,6 @@ public class Crypt {
             f_ed = F.f(R0, keys[i]);
             // R1 = L0 XOR f (R0, ki)
             R1 = Util.XOR(L0, f_ed);
-//if (i == 0) {
-//    System.out.println("00 ci  异或");
-//    Main.print(L0);
-//    Main.print(f_ed);
-//    Main.print(R1);
-//}
             // 重置 L0, R0, 初始下次迭代
             System.arraycopy(L1, 0, L0, 0, 32);
             System.arraycopy(R1, 0, R0, 0, 32);
