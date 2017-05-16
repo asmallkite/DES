@@ -68,10 +68,6 @@ public class Crypt {
      */
     private int[] iteration16Times(int[] dataIPed, int[] byteKey) {
         int[][] keys = KeyGenerate.keysGenerate(byteKey); // 生成密钥数组
-        for (int i = 0; i < 16; i++) {
-            System.out.println("第" + i + "密钥");
-            Util.print(keys[i]);
-        }
 
         int[] L0 = new int[32];
         int[] R0 = new int[32];
